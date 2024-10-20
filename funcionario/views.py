@@ -20,7 +20,7 @@ def novo_funcionario(request):
 
 def exibir_funcionario(request,id):
     dados = Funcionario.objects.get(id=id)
-    return render(request, 'exibir.html', {'dados' : dados,'titulo': dados.first_name})
+    return render(request, 'exibir.html', {'dados' : dados,'titulo': dados.first_name,'aplicativo':'funcionario'})
 
 def deletar_funcionario(request, id):
     funcionario = Funcionario.objects.get(id=id)
@@ -39,9 +39,9 @@ def alterar_funcionario(request,id):
         form = FuncionarioForms(instance=funcionario)  
 
     # Renderiza a página com o formulário
-    return render(request, 'alterar.html', {'form': form, 'funcionario': funcionario})
+    return render(request, 'alterar.html', {'form': form})
 
 def todos_funcionarios(request):
     funcionarios = Funcionario.objects.all()
 
-    return render(request, 'todos.html',{'dados' : funcionarios})
+    return render(request, 'todos.html',{'dados' : funcionarios, 'titulo':'Todos os Funcionários'})

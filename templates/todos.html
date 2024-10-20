@@ -7,8 +7,13 @@
 </head>
 <body>
     {% for dado in dados %}
+    <!-- informações funcionarios-->
         {{dado.first_name}}
         {{dado.last_name}}
+
+    <!-- informações processos-->
+     {{dado.nome}}
+     {{dado.descricao}}
     {% endfor %}
 </body>
 </html>
