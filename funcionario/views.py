@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from funcionario.forms import FuncionarioForms
 from django.views.decorators.csrf import csrf_protect
 from funcionario.models import Funcionario
@@ -34,9 +34,9 @@ def alterar_funcionario(request,id):
         form = FuncionarioForms(request.POST, request.FILES, instance=funcionario) 
         if form.is_valid():
             form.save()  
-            return redirect('exibir_funcionario')  
+            return redirect('Funcionario:exibir_funcionario', id=id)  
     else:
         form = FuncionarioForms(instance=funcionario)  
 
     # Renderiza a página com o formulário
-    return render(request, 'alterar_funcionario.html', {'form': form, 'funcionario': funcionario})
+    return render(request, 'alterar.html', {'form': form, 'funcionario': funcionario})
