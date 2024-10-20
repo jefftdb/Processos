@@ -4,9 +4,9 @@ from .models import Funcionario
 class FuncionarioForms(forms.ModelForm):
     class Meta:
         model = Funcionario
-        fields = ['username','password','first_name','last_name','email','cpf', 'telefone', 'data_nascimento', 'secretarias', 'processos', 'endereco']
+        fields = ['foto','username','password','first_name','last_name','email','cpf', 'telefone', 'data_nascimento', 'secretarias', 'processos', 'endereco']
 
-        widgets = {
+        widgets = {            
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite seu nome'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite seu sobrenome'}),
             'cpf': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite o CPF'}),

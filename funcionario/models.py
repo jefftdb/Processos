@@ -10,6 +10,7 @@ class Funcionario(User):
     secretarias = models.ManyToManyField('secretaria.Secretaria',related_name='secretarias_funcionarios')
     processos = models.ManyToManyField(Processo, related_name='processos_funcionario')
     endereco = models.ManyToManyField(Endereco,related_name='enderecos_funcionario')
+    foto = models.ImageField(upload_to = 'funcionario/',blank = True, null =True)
 
     def __str__(self):
         return self.first_name
