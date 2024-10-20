@@ -40,3 +40,8 @@ def alterar_funcionario(request,id):
 
     # Renderiza a página com o formulário
     return render(request, 'alterar.html', {'form': form, 'funcionario': funcionario})
+
+def todos_funcionarios(request):
+    funcionarios = Funcionario.objects.all()
+
+    return render(request, 'todos.html',{'dados' : funcionarios})
