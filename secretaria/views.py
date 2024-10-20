@@ -9,7 +9,7 @@ def nova_secretaria(request):
         if form.is_valid():
             form.save()
             print("Formulário salvo com sucesso")
-            return redirect('index.html')
+            return render(request, 'index.html', {'mensagem': 'Secretaria cadastrada com sucesso!' })
         else:
             print("Formulário inválido")
             print(form.errors)

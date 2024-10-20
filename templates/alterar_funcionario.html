@@ -1,0 +1,5 @@
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Exibe o formulário -->
+    <button type="submit">Salvar alterações</button>
+</form>

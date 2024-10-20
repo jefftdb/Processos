@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from funcionario.forms import FuncionarioForms
 from django.views.decorators.csrf import csrf_protect
 from funcionario.models import Funcionario
@@ -10,7 +10,7 @@ def novo_funcionario(request):
         if form.is_valid():
             form.save()
             print("Formulário salvo com sucesso")
-            return redirect('index.html')
+            return render(request, 'index.html', {'mensagem': 'Usuario cadastrado com sucesso!' })
         else:
             print("Formulário inválido")
             print(form.errors)
@@ -27,3 +27,16 @@ def deletar_funcionario(request, id):
     titulo = funcionario.first_name +" " +funcionario.last_name  
     funcionario.delete()  
     return render(request, 'exibir.html', {'mensagem': 'Usuario ' + titulo + ' deletado com sucesso!' })
+
+def alterar_funcionario(request,id):
+    funcionario = get_object_or_404(Funcionario, id=id)
+    if request.method == 'POST':
+        form = FuncionarioForms(request.POST, request.FILES, instance=funcionario) 
+        if form.is_valid():
+            form.save()  
+            return redirect('exibir_funcionario')  
+    else:
+        form = FuncionarioForms(instance=funcionario)  
+
+    # Renderiza a página com o formulário
+    return render(request, 'alterar_funcionario.html', {'form': form, 'funcionario': funcionario})

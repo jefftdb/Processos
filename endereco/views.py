@@ -9,7 +9,7 @@ def novo_endereco(request):
         if form.is_valid():
             form.save()
             print("Formulário salvo com sucesso")
-            return redirect('index.html')
+            return render(request, 'index.html', {'mensagem': 'Endereço cadastrado com sucesso!' })
         else:
             print("Formulário inválido")
             print(form.errors)
