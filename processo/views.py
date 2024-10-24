@@ -25,7 +25,7 @@ def exibir_processo(request,id):
 def deletar_processo(request, id):
     processo = Processo.objects.get(id=id)
     titulo = processo.nome  
-    funcionario.delete()  
+    processo.delete()  
     return render(request, 'exibir.html', {'mensagem': 'Processo ' + titulo + ' deletado com sucesso!' })
 
 def alterar_processo(request,id):

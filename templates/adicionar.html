@@ -1,31 +1,34 @@
 <!DOCTYPE html5>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo(a) {{titulo}}</title>
-</head>
-<body>
-    {% block content %}
-<div class="main-content main-content-detail container">
-    <section class="form-control" style="margin-left: 5em">
-        <form method="POST" enctype="multipart/form-data">
-            <h1 style="text-align: center;">Novo(a) {{titulo}}</h1>
-            <div class="row">
-                {% csrf_token %}
-                {% for field in form.visible_fields %}
-                    <div class="col-12 col-lg-12" style="margin-bottom: 20px;">
-                        <label for="{{ field.id_for_label }}" style="color: #000000; font-size: 20px; margin-bottom: 10px;">{{field.label}}</label>
-                        {{ field }}
-                    </div>
-                {% endfor %}
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Novo(a) {{titulo}}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+    <body>
+        {% block content %}
+        <div class="bg-secondary">
+            <div class="main-content main-content-detail container d-flex justify-content-center">
+                <section class="form-control min-vh-100 my-5 ms-5 me-5 col-sm-2 col-form-label">
+                    <form method="POST" enctype="multipart/form-data">
+                        <h1 class="d-flex justify-content-center">Novo(a) {{titulo}}</h1>
+                        <div>
+                            {% csrf_token %}
+                            {% for field in form.visible_fields %}
+                                <div class="my-2">
+                                    <label for="{{ field.id_for_label }}" class="text-dark fs-5 mb-2 my-4">{{field.label}}</label>
+                                    {{ field }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-success col-12">Adicionar {{titulo}}</button>
+                        </div>
+                    </form>
+                </section>
             </div>
-            <div>
-                <button type="submit" class="btn btn-success col-12">Adicionar {{titulo}}</button>
-            </div>
-        </form>
-    </section>
-</div>
-{% endblock content %}
-</body>
+        </div>
+        {% endblock content %}
+    </body>
 </html>
