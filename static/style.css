@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "aside main"
+        "footer footer";
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto;
+    gap: 10px;
+    
+}
+header {
+    grid-area: header;
+    background-color: #f4f4f4;
+    padding: 5px;
+    text-align: center;
+}
+nav {
+    grid-area: nav;
+    padding: 10px 20px;
+    background-color: #333; /* Cor de fundo escura */
+    color: #ffffff; /* Cor do texto */
+    width: 150px; /* Largura fixa para o menu */
+    height: 100%; /* Altura total do menu */
+}
+nav a {
+    color: #ffffff; /* cor dos links */
+    text-decoration: none; /* sem sublinhado */
+    margin: 0 15px; /* espaçamento entre os links */
+    font-size: 16px; /* tamanho da fonte */
+}
+
+nav a:hover {
+    color: #ff6347; /* cor dos links ao passar o mouse */
+    text-decoration: underline; /* sublinhado ao passar o mouse */
+}
+
+/* Estilo para os itens da lista dentro do nav */
+nav ul {
+    list-style: none; /* Remove os marcadores de lista */
+    padding: 0; /* Remove o espaçamento interno da lista */
+    margin: 0; /* Remove a margem da lista */
+}
+
+/* Estilo para os links */
+nav ul li {
+    margin-bottom: 25px; /* Adiciona espaçamento entre os itens de lista */
+}
+
+nav ul li a {
+    color: #ffffff; /* Cor do texto */
+    text-decoration: none; /* Remove o sublinhado */
+    display: block; /* Faz os links ocuparem o total de largura do item */
+}
+
+main {
+    grid-area: main;
+    background-color: #e2e2e2;
+    padding: 10px;
+    text-align: center;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: center;
+}
